@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#B23A2F">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.googletagservices.com https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com https://pagead2.googlesyndication.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net; object-src 'none'; base-uri 'self'; frame-ancestors 'none';">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P41HN02DDV"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6021714937287056"
+     crossorigin="anonymous"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-P41HN02DDV');
+</script>
+<title>Water Intake Calculator &mdash; Free Daily Hydration Goal &amp; Glass Tracker</title>
+<meta name="description" content="Free water intake calculator. Get a personalized daily hydration goal based on your weight and activity level, track glasses as you drink with a custom glass size, and see your hydration streak and weekly history.">
+<meta property="og:title" content="Free Water Intake Calculator | Healthy Life Scale">
+<meta property="og:description" content="Get a personalized daily hydration goal and track glasses as you drink, free and private.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://water.healthylifescale.com/">
+<meta property="og:image" content="https://healthylifescale.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Healthy Life Scale">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free Water Intake Calculator | Healthy Life Scale">
+<meta name="twitter:description" content="Get a personalized daily hydration goal and track glasses as you drink, free and private.">
+<meta name="twitter:image" content="https://healthylifescale.com/og-image.png">
+<link rel="canonical" href="https://water.healthylifescale.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAF7F0; --paper-raised:#FFFFFF; --ink:#191918; --ink-soft:#585448;
+    --muted:#8A8577; --protein:#B23A2F; --carb:#C08A17; --fat:#5C6B2E; --fiber:#3A6B6B;
+    --danger:#B23A2F; --hair:#DEDACD; --water:#3A6B9E; --water-soft:#E7EDF4;
+  }
+  *{box-sizing:border-box;}
+  body{ margin:0; background:var(--paper); color:var(--ink); font-family:'Inter',sans-serif; -webkit-font-smoothing:antialiased; }
+  #root{ max-width:620px; margin:0 auto; padding:28px 18px 80px; }
+
+  .site-header{ position:sticky; top:0; z-index:100; background:var(--paper); border-bottom:1.5px solid var(--ink); margin-bottom:22px; padding:14px 0; }
+  #resultCard, #bmrLine, #resultBanner, #ccResults, #resultLabel{ scroll-margin-top: 80px; }
+  .site-header-inner{ display:flex; align-items:center; justify-content:space-between; position:relative; }
+  .site-logo{ display:flex; align-items:center; gap:7px; font-family:'Archivo Black',sans-serif; font-size:14px; text-transform:uppercase; letter-spacing:-0.01em; color:var(--ink); text-decoration:none; white-space:nowrap; }
+  .site-logo .logo-icon{ flex-shrink:0; display:block; }
+
+  .current-page{ font-family:'Space Mono',monospace; font-size:10.5px; text-transform:uppercase; letter-spacing:0.03em; color:var(--muted); display:none; }
+
+  .tools-dropdown{ position:relative; }
+  .tools-btn{
+    display:flex; align-items:center; gap:7px; font-family:'Space Mono',monospace; font-size:11px;
+    text-transform:uppercase; letter-spacing:0.03em; background:var(--ink); color:var(--paper);
+    border:1.5px solid var(--ink); padding:9px 14px; border-radius:3px; cursor:pointer;
+    transition:background-color 0.15s ease;
+  }
+  .tools-btn:hover{ background:#33332E; }
+  .tools-btn .chevron{ transition:transform 0.15s ease; flex-shrink:0; }
+  .tools-btn[aria-expanded="true"] .chevron{ transform:rotate(180deg); }
+
+  .tools-menu{
+    display:none; position:absolute; top:calc(100% + 10px); right:0; width:320px; max-width:calc(100vw - 36px);
+    background:var(--paper-raised); border:1.5px solid var(--ink); box-shadow:0 10px 26px rgba(26,26,22,0.16);
+    padding:8px; z-index:200; max-height:70vh; overflow-y:auto;
+  }
+  .tools-menu.open{ display:block; }
+  .tools-menu-label{ font-family:'Space Mono',monospace; font-size:9.5px; text-transform:uppercase; letter-spacing:0.05em; color:var(--muted); padding:8px 10px 4px; }
+  .tools-menu a{ display:block; padding:10px; border-radius:3px; text-decoration:none; color:var(--ink); border-bottom:1px solid var(--hair); }
+  .tools-menu a:last-child{ border-bottom:none; }
+  .tools-menu a:hover{ background:var(--paper); }
+  .tools-menu .tm-name{ font-weight:700; font-size:13px; margin-bottom:2px; }
+  .tools-menu .tm-desc{ font-size:11px; color:var(--ink-soft); line-height:1.45; }
+
+  @media (min-width:640px){
+    .current-page{ display:block; }
+  }
+
+  .brand{ margin-bottom:22px; }
+  .brand h1{ font-family:'Archivo Black',sans-serif; font-size:26px; letter-spacing:-0.02em; margin:0; text-transform:uppercase; }
+  .brand .sub{ font-family:'Space Mono',monospace; font-size:11px; color:var(--muted); letter-spacing:0.04em; }
+
+  .card{ background:var(--paper-raised); border:1.5px solid var(--ink); padding:18px; margin-bottom:20px; }
+  .card h3{ font-family:'Space Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.08em; margin:0 0 14px; color:var(--ink-soft); }
+
+    .field-row{ display:flex; flex-direction:column; gap:10px; margin-bottom:10px; }
+  .field{ display:flex; align-items:center; gap:12px; }
+  .field label{ flex:0 0 96px; font-size:11px; color:var(--muted); font-family:'Space Mono',monospace; margin-bottom:0; text-transform:uppercase; letter-spacing:0.03em; }
+  .field input, .field select{ flex:1; min-width:0; padding:9px 10px; border:1.5px solid var(--hair); border-radius:2px; font-family:'Inter',sans-serif; font-size:14px; background:var(--paper); color:var(--ink); }
+  .field input:focus, .field select:focus{ outline:2px solid var(--water); outline-offset:1px; border-color:var(--water); }
+  @media (max-width:340px){
+    .field{ flex-direction:column; align-items:stretch; gap:4px; }
+    .field label{ flex:none; }
+  }
+
+  .calc-btn{ background:var(--ink); color:var(--paper); border:none; padding:11px 20px; font-family:'Space Mono',monospace; font-size:12.5px; text-transform:uppercase; letter-spacing:0.04em; cursor:pointer; border-radius:2px; width:100%; margin-top:6px; }
+  .calc-btn:hover{ background:var(--water); }
+
+  .label{ background:var(--paper-raised); border:3px solid var(--ink); padding:16px; display:none; margin-bottom:20px; }
+  .label.show{ display:block; }
+  .label h2{ font-family:'Archivo Black',sans-serif; font-size:22px; margin:0 0 4px; letter-spacing:-0.01em; }
+  .thick{ border:none; border-top:9px solid var(--ink); margin:8px 0 12px; }
+  .goal-value{ font-family:'Space Mono',monospace; font-weight:700; font-size:40px; text-align:center; margin:6px 0 4px; color:var(--water); }
+  .goal-sub{ text-align:center; font-family:'Space Mono',monospace; font-size:12px; color:var(--ink-soft); margin-bottom:6px; }
+  .goal-alt{ text-align:center; font-family:'Space Mono',monospace; font-size:11px; color:var(--muted); }
+
+  .tracker-card{ background:var(--paper-raised); border:1.5px solid var(--ink); padding:18px; }
+  .tracker-top{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:12px; }
+  .tracker-top h3{ margin:0; }
+  .progress-track{ height:18px; background:var(--paper); border:1.5px solid var(--ink); border-radius:9px; overflow:hidden; margin-bottom:10px; }
+  .progress-fill{ height:100%; background:var(--water); transition:width 0.3s ease; }
+  .progress-text{ font-family:'Space Mono',monospace; font-size:12.5px; text-align:center; margin-bottom:16px; color:var(--ink-soft); }
+  .glass-row{ display:flex; gap:8px; justify-content:center; margin-bottom:14px; }
+  .glass-btn{ background:none; border:2px solid var(--water); color:var(--water); font-size:22px; width:44px; height:44px; border-radius:50%; cursor:pointer; }
+  .glass-btn:hover{ background:var(--water); color:var(--paper-raised); }
+  .glass-btn.minus{ border-color:var(--muted); color:var(--muted); }
+  .glass-btn.minus:hover{ background:var(--muted); color:var(--paper-raised); }
+  .glass-count{ font-family:'Space Mono',monospace; font-size:26px; font-weight:700; align-self:center; min-width:70px; text-align:center; }
+  .glass-note{ text-align:center; font-family:'Space Mono',monospace; font-size:10.5px; color:var(--muted); }
+
+  .disclaimer{ font-family:'Space Mono',monospace; font-size:10.5px; color:var(--muted); margin-top:18px; line-height:1.6; }
+  .howworks-list{ margin:0 0 14px; padding-left:20px; font-size:13.5px; line-height:1.75; color:var(--ink-soft); }
+  .howworks-list li{ margin-bottom:8px; }
+  .howworks-list li b{ color:var(--ink); }
+  .howworks-list li:last-child{ margin-bottom:0; }
+  .howworks-note{ font-size:12.5px; color:var(--ink-soft); border-top:1px solid var(--hair); padding-top:12px; margin:0; line-height:1.6; }
+  .explore-grid{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .explore-card{ background:var(--paper-raised); border:1.5px solid var(--hair); padding:13px 14px; text-decoration:none; color:var(--ink); display:block; transition:border-color 0.15s ease, background-color 0.15s ease; }
+  .explore-card:hover{ border-color:var(--ink); background:var(--paper); }
+  .explore-card .ec-name{ font-weight:700; font-size:13.5px; margin-bottom:4px; }
+  .explore-card .ec-desc{ font-size:11.5px; color:var(--ink-soft); line-height:1.45; margin-bottom:8px; }
+  .explore-card .ec-arrow{ font-family:'Space Mono',monospace; font-size:10.5px; color:var(--muted); text-transform:uppercase; letter-spacing:0.03em; }
+  @media (max-width:520px){ .explore-grid{ grid-template-columns:1fr; } }
+
+  .site-footer{ margin-top:30px; border-top:1.5px solid var(--ink); padding-top:26px; }
+  .footer-about h3{ font-family:'Archivo Black',sans-serif; font-size:15px; text-transform:uppercase; letter-spacing:-0.01em; margin:0 0 10px; }
+  .footer-about p{ font-size:12.5px; line-height:1.75; color:var(--ink-soft); margin:0 0 18px; max-width:560px; }
+  .footer-links-title{ font-family:'Space Mono',monospace; font-size:9.5px; text-transform:uppercase; letter-spacing:0.05em; color:var(--muted); margin-bottom:10px; }
+  .footer-links{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px 16px; margin-bottom:20px; }
+  .footer-links a{ font-size:11.5px; color:var(--protein); text-decoration:underline; text-underline-offset:2px; }
+  .footer-links a:hover{ color:var(--ink); text-decoration:none; }
+    .footer-legal{ font-family:'Space Mono',monospace; font-size:10.5px; color:var(--muted); margin-bottom:10px; }
+  .footer-legal a{ color:var(--ink-soft); text-decoration:underline; text-underline-offset:2px; }
+  .footer-legal a:hover{ color:var(--ink); }
+  .footer-legal .fl-dot{ margin:0 8px; color:var(--hair); }
+
+  .footer-bottom{ font-family:'Space Mono',monospace; font-size:10px; color:var(--muted); border-top:1px solid var(--hair); padding-top:14px; line-height:1.7; }
+  @media (max-width:520px){ .footer-links{ grid-template-columns:1fr 1fr; } }
+
+  .faq-item{ border-bottom:1px solid var(--hair); }
+  .faq-item:last-child{ border-bottom:none; }
+  .faq-q{ width:100%; text-align:left; background:none; border:none; padding:14px 0; font-weight:700; font-size:13.5px; cursor:pointer; display:flex; justify-content:space-between; align-items:center; color:var(--ink); font-family:'Inter',sans-serif; }
+  .faq-q .faq-icon{ transition:transform 0.15s ease; flex-shrink:0; margin-left:10px; font-family:'Space Mono',monospace; }
+  .faq-q.open .faq-icon{ transform:rotate(45deg); }
+  .faq-a{ display:none; padding:0 0 14px; font-size:13px; line-height:1.65; color:var(--ink-soft); }
+  .faq-a.open{ display:block; }
+
+  .glass-size-row{ display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:14px; }
+  .glass-size-row label{ font-family:'Space Mono',monospace; font-size:10.5px; color:var(--muted); text-transform:uppercase; letter-spacing:0.03em; }
+  .glass-size-row select{ padding:6px 8px; border:1.5px solid var(--hair); border-radius:2px; font-family:'Space Mono',monospace; font-size:11.5px; background:var(--paper); color:var(--ink); }
+
+  .streak-badge{ display:inline-flex; align-items:center; gap:6px; font-family:'Space Mono',monospace; font-size:10.5px; text-transform:uppercase; letter-spacing:0.03em; color:var(--water); background:var(--water-soft); padding:5px 10px; border-radius:20px; margin-bottom:14px; }
+  .streak-badge.zero{ color:var(--muted); background:var(--paper); border:1px solid var(--hair); }
+  .week-chart{ display:flex; align-items:flex-end; gap:5px; height:70px; margin-top:6px; }
+  .week-bar-col{ flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; }
+  .week-bar{ width:100%; background:var(--water); border-radius:2px 2px 0 0; min-height:3px; }
+  .week-bar.hit-goal{ background:var(--fiber); }
+  .week-bar.empty{ background:var(--hair); }
+  .week-bar-label{ font-family:'Space Mono',monospace; font-size:8.5px; color:var(--muted); text-transform:uppercase; }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much water should I drink per day?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A common estimate is about 33ml per kg of body weight per day, adjusted upward for activity level \u2014 this calculator gives you a personalized number rather than a generic \"8 glasses\" rule."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does exercise increase how much water I need?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes \u2014 more activity means more fluid loss through sweat, so the calculator scales your goal up based on your selected activity level."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the \"8 glasses a day\" rule accurate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It's a reasonable rough average for many adults, but actual needs vary by body size, climate, and activity \u2014 a personalized calculation is more accurate than a one-size-fits-all number."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I track how much water I've had today?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes \u2014 after calculating your goal, use the tap counter below it to log each glass (250ml) and watch your progress bar fill up."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does coffee or tea count toward daily water intake?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most research suggests moderate caffeinated drinks do contribute to hydration, though plain water is still the most reliable way to track your intake with this calculator."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I change the glass size I'm tracking?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes \u2014 choose from 200ml, 250ml, 330ml, 500ml, or 750ml in the tracker, matching whatever cup or bottle you're actually using. Your goal automatically converts to the right number of taps."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this tool track my hydration streak or history?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes \u2014 a streak badge shows how many consecutive days you've reached your water goal, and a weekly chart shows the last 7 days so you can see your pattern at a glance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to drink more water when pregnant or breastfeeding?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, fluid needs generally increase during pregnancy and especially while breastfeeding. This calculator gives a general baseline for healthy adults \u2014 talk to your doctor or midwife for guidance specific to your pregnancy."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div id="root">
+
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a href="https://healthylifescale.com" class="site-logo">
+        <svg class="logo-icon" width="24" height="24" viewBox="0 0 100 100" role="img" aria-hidden="true">
+          <rect x="2" y="2" width="96" height="96" rx="18" fill="var(--protein)"/>
+          <polyline points="16,50 30,50 38,28 50,74 61,36 70,50 84,50" fill="none" stroke="var(--paper)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Healthy Life Scale
+      </a>
+      <span class="current-page">Water Intake</span>
+      <div class="tools-dropdown">
+        <button class="tools-btn" id="toolsBtn" aria-haspopup="true" aria-expanded="false">
+          Other Tools
+          <svg class="chevron" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 3L5 7L9 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="tools-menu" id="toolsMenu">
+          <div class="tools-menu-label">Other tools</div>
+        <a href="https://healthylifescale.com">
+          <div class="tm-name">Calorie Tracker</div>
+          <div class="tm-desc">Search 240+ foods and track daily calories, protein, carbs, fat, fiber, sugar & sodium.</div>
+        </a>
+        <a href="https://bmi.healthylifescale.com">
+          <div class="tm-name">BMI Calculator</div>
+          <div class="tm-desc">Check your Body Mass Index and healthy weight range.</div>
+        </a>
+        <a href="https://bodyfat.healthylifescale.com">
+          <div class="tm-name">Body Fat % Calculator</div>
+          <div class="tm-desc">Estimate body fat using the Navy tape-measure method.</div>
+        </a>
+        <a href="https://waisttohip.healthylifescale.com">
+          <div class="tm-name">Waist-to-Hip Ratio</div>
+          <div class="tm-desc">Check your ratio against WHO risk categories.</div>
+        </a>
+        <a href="https://framesize.healthylifescale.com">
+          <div class="tm-name">Body Frame Size Calculator</div>
+          <div class="tm-desc">Find your small, medium, or large frame size.</div>
+        </a>
+        <a href="https://bmr.healthylifescale.com">
+          <div class="tm-name">BMR / TDEE</div>
+          <div class="tm-desc">Find your daily calorie needs and a personalized macro split.</div>
+        </a>
+        <a href="https://protein.healthylifescale.com">
+          <div class="tm-name">Protein Intake Calculator</div>
+          <div class="tm-desc">Find your daily protein target based on body weight and goal.</div>
+        </a>
+        <a href="https://caloriesburned.healthylifescale.com">
+          <div class="tm-name">Calories Burned Calculator</div>
+          <div class="tm-desc">See how many calories you burned during any activity.</div>
+        </a>
+        <a href="https://sleep.healthylifescale.com">
+          <div class="tm-name">Sleep Calculator</div>
+          <div class="tm-desc">Find your ideal bedtime or wake-up time by sleep cycle.</div>
+        </a>
+        <a href="https://nap.healthylifescale.com">
+          <div class="tm-name">Nap Calculator</div>
+          <div class="tm-desc">Find your ideal nap length and wake-up time.</div>
+        </a>
+        <a href="https://duedate.healthylifescale.com">
+          <div class="tm-name">Pregnancy Due Date</div>
+          <div class="tm-desc">Estimate your due date and track gestational age week by week.</div>
+        </a>
+        <a href="https://pregnancyweight.healthylifescale.com">
+          <div class="tm-name">Pregnancy Weight Gain</div>
+          <div class="tm-desc">See your recommended pregnancy weight gain range.</div>
+        </a>
+        <a href="https://period.healthylifescale.com">
+          <div class="tm-name">Period Tracker</div>
+          <div class="tm-desc">Estimate your next period, ovulation day, and fertile window.</div>
+        </a>
+        <a href="https://height.healthylifescale.com">
+          <div class="tm-name">Height Predictor</div>
+          <div class="tm-desc">Estimate a child's adult height from parents' heights.</div>
+        </a>
+        <a href="https://bloodpressure.healthylifescale.com">
+          <div class="tm-name">Blood Pressure Calculator</div>
+          <div class="tm-desc">Check your reading against AHA blood pressure categories.</div>
+        </a>
+        <a href="https://heartage.healthylifescale.com">
+          <div class="tm-name">Heart Age Calculator</div>
+          <div class="tm-desc">See how lifestyle factors compare your heart age to your real age.</div>
+        </a>
+        <a href="https://ascvd.healthylifescale.com">
+          <div class="tm-name">ASCVD Risk Calculator</div>
+          <div class="tm-desc">Estimate your 10-year heart disease and stroke risk tier.</div>
+        </a>
+        <a href="https://heartratezone.healthylifescale.com">
+          <div class="tm-name">Target Heart Rate Zone</div>
+          <div class="tm-desc">Find your personalized training zones using the Karvonen formula.</div>
+        </a>
+        <a href="https://breathholding.healthylifescale.com">
+          <div class="tm-name">Breath Holding Test</div>
+          <div class="tm-desc">Time how long you can hold your breath and see how it compares.</div>
+        </a>
+        <a href="https://pace.healthylifescale.com">
+          <div class="tm-name">Running Pace Calculator</div>
+          <div class="tm-desc">Calculate your pace, speed, and predicted race times.</div>
+        </a>
+        <a href="https://symptoms.healthylifescale.com">
+          <div class="tm-name">Symptom Checker</div>
+          <div class="tm-desc">Get an urgency level based on your symptoms, age, and history.</div>
+        </a>
+        <a href="https://mentalhealth.healthylifescale.com">
+          <div class="tm-name">Mental Health Survey</div>
+          <div class="tm-desc">A private PHQ-9 / GAD-7 depression & anxiety screening.</div>
+        </a>
+        <a href="https://fertility.healthylifescale.com">
+          <div class="tm-name">Fertility Checklist</div>
+          <div class="tm-desc">Check lifestyle factors linked to sperm health and track over time.</div>
+        </a>
+        <a href="https://gripstrength.healthylifescale.com">
+          <div class="tm-name">Grip Strength Calculator</div>
+          <div class="tm-desc">Benchmark your handgrip strength by age and sex.</div>
+        </a>
+        <a href="https://onerepmax.healthylifescale.com">
+          <div class="tm-name">One-Rep Max Calculator</div>
+          <div class="tm-desc">Estimate your 1RM using the Epley and Brzycki formulas.</div>
+        </a>
+        <a href="https://bac.healthylifescale.com">
+          <div class="tm-name">BAC Calculator</div>
+          <div class="tm-desc">Educational blood alcohol content estimate.</div>
+        </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<script>
+(function(){
+  var btn = document.getElementById('toolsBtn');
+  var menu = document.getElementById('toolsMenu');
+  if(!btn || !menu) return;
+  btn.addEventListener('click', function(e){
+    e.stopPropagation();
+    var isOpen = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  document.addEventListener('click', function(e){
+    if(!menu.classList.contains('open')) return;
+    if(!menu.contains(e.target) && !btn.contains(e.target)){
+      menu.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && menu.classList.contains('open')){
+      menu.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.focus();
+    }
+  });
+})();
+</script>
+
+
+  <div class="brand">
+    <h1>Water Intake Calculator</h1>
+    <div class="sub">personalized daily goal &middot; glass tracker &middot; streaks &middot; weekly history</div>
+  </div>
+
+  <div class="card">
+    <h3>Your details</h3>
+    <div class="field-row">
+      <div class="field"><label for="weight">Weight (kg)</label><input type="number" id="weight" placeholder="e.g. 65"></div>
+      <div class="field">
+        <label for="activity">Activity level</label>
+        <select id="activity">
+          <option value="1">Sedentary (little exercise)</option>
+          <option value="1.1">Light (1&ndash;3 days/week)</option>
+          <option value="1.2" selected>Moderate (3&ndash;5 days/week)</option>
+          <option value="1.3">Active (6&ndash;7 days/week)</option>
+          <option value="1.4">Very active (athlete)</option>
+        </select>
+      </div>
+    </div>
+    <button class="calc-btn" id="calcBtn">Calculate my goal</button>
+  </div>
+
+  <div class="label" id="resultLabel">
+    <h2>Daily Water Goal</h2>
+    <hr class="thick">
+    <div class="goal-value" id="goalLiters">0.0 L</div>
+    <div class="goal-sub" id="goalGlasses"></div>
+    <div class="goal-alt" id="goalOz"></div>
+  </div>
+
+  <div class="tracker-card">
+    <div class="tracker-top">
+      <h3 style="font-family:'Space Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.08em; color:var(--ink-soft); margin:0;">Today's tracker</h3>
+      <span class="glass-note" id="trackerDate"></span>
+    </div>
+    <div class="glass-size-row">
+      <label for="glassSize">Glass size</label>
+      <select id="glassSize">
+        <option value="200">200 ml (small glass)</option>
+        <option value="250" selected>250 ml (standard glass)</option>
+        <option value="330">330 ml (can)</option>
+        <option value="500">500 ml (bottle)</option>
+        <option value="750">750 ml (large bottle)</option>
+      </select>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:0%;"></div></div>
+    <div class="progress-text" id="progressText">0 of 8 glasses (0 L)</div>
+    <div class="glass-row">
+      <button class="glass-btn minus" id="minusBtn">&minus;</button>
+      <div class="glass-count" id="glassCount">0</div>
+      <button class="glass-btn" id="plusBtn">+</button>
+    </div>
+    <div class="glass-note" id="glassSizeNote">each glass counts as 250ml &middot; saved on this device only</div>
+  </div>
+
+  <div class="card">
+    <h3>Your hydration streak</h3>
+    <span class="streak-badge" id="streakBadge"></span>
+    <div class="week-chart" id="weekChart"></div>
+    <div class="glass-note" style="margin-top:10px; text-align:left;">Days where you reached your goal are shown in green.</div>
+  </div>
+
+  <div class="card">
+    <h3>How it works</h3>
+    <ol class="howworks-list">
+      <li><b>Enter your weight and activity level.</b> More activity means more fluid loss, so the goal adjusts upward.</li>
+      <li><b>Get your daily goal.</b> The calculator uses a common formula &mdash; roughly 33ml per kg of bodyweight &mdash; then scales it by your activity level.</li>
+      <li><b>Log glasses as you drink.</b> Tap the + button each time you finish a glass (counted as 250ml). The progress bar fills up toward your goal.</li>
+      <li><b>It resets daily.</b> Your tracker automatically starts fresh each day, while your goal stays saved.</li>
+    </ol>
+    <p class="howworks-note">This is a general estimate — actual needs vary with climate, exercise intensity, health conditions, pregnancy, and medications.</p>
+  </div>
+
+  <div class="card">
+    <h2 class="section-title" style="font-family:'Archivo Black',sans-serif; font-size:17px; text-transform:uppercase; letter-spacing:-0.01em; margin:0 0 14px;">Frequently asked questions</h2>
+    <div id="faqList">
+      <div class="faq-item">
+        <button class="faq-q">How much water should I drink per day?<span class="faq-icon">+</span></button>
+        <div class="faq-a">A common estimate is about 33ml per kg of body weight per day, adjusted upward for activity level — this calculator gives you a personalized number rather than a generic "8 glasses" rule.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Does exercise increase how much water I need?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Yes — more activity means more fluid loss through sweat, so the calculator scales your goal up based on your selected activity level.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Is the "8 glasses a day" rule accurate?<span class="faq-icon">+</span></button>
+        <div class="faq-a">It's a reasonable rough average for many adults, but actual needs vary by body size, climate, and activity — a personalized calculation is more accurate than a one-size-fits-all number.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Can I track how much water I've had today?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Yes — after calculating your goal, use the tap counter below it to log each glass (250ml) and watch your progress bar fill up.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Does coffee or tea count toward daily water intake?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Most research suggests moderate caffeinated drinks do contribute to hydration, though plain water is still the most reliable way to track your intake with this calculator.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Can I change the glass size I'm tracking?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Yes — choose from 200ml, 250ml, 330ml, 500ml, or 750ml in the tracker, matching whatever cup or bottle you're actually using. Your goal automatically converts to the right number of taps.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Does this tool track my hydration streak or history?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Yes — a streak badge shows how many consecutive days you've reached your water goal, and a weekly chart shows the last 7 days so you can see your pattern at a glance.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Do I need to drink more water when pregnant or breastfeeding?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Yes, fluid needs generally increase during pregnancy and especially while breastfeeding. This calculator gives a general baseline for healthy adults — talk to your doctor or midwife for guidance specific to your pregnancy.</div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <h3>Explore other tools</h3>
+    <div class="explore-grid">
+      <a href="https://healthylifescale.com" class="explore-card">
+        <div class="ec-name">Calorie Tracker</div>
+        <div class="ec-desc">Search 240+ foods and track daily calories, protein, carbs, fat, fiber, sugar & sodium.</div>
+        <div class="ec-arrow">Open &rarr;</div>
+      </a>
+      <a href="https://bmr.healthylifescale.com" class="explore-card">
+        <div class="ec-name">TDEE & Macro Calculator</div>
+        <div class="ec-desc">Find your daily calorie needs and a personalized macro split.</div>
+        <div class="ec-arrow">Open &rarr;</div>
+      </a>
+      <a href="https://sleep.healthylifescale.com" class="explore-card">
+        <div class="ec-name">Sleep Calculator</div>
+        <div class="ec-desc">Find your ideal bedtime or wake-up time by sleep cycle.</div>
+        <div class="ec-arrow">Open &rarr;</div>
+      </a>
+      <a href="https://bmi.healthylifescale.com" class="explore-card">
+        <div class="ec-name">BMI Calculator</div>
+        <div class="ec-desc">Check your Body Mass Index and healthy weight range.</div>
+        <div class="ec-arrow">Open &rarr;</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    This is a general estimate, not medical advice. Needs vary with climate, health conditions, pregnancy, and medications — check with a doctor if you have specific concerns.
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-about">
+      <h3>About Healthy Life Scale</h3>
+      <p>Healthy Life Scale is a collection of free health and wellness calculators &mdash; a calorie and macro tracker, BMI calculator, water intake calculator, TDEE calculator, sleep calculator, pregnancy due date and weight gain calculators, period and ovulation tracker, child height predictor, blood pressure calculator, heart age calculator, breath holding test, ASCVD heart risk calculator, symptom checker, and a PHQ-9/GAD-7 mental health survey. Every tool is free to use, works without an account or app download, and saves your data privately on your own device rather than a server. Built for anyone who wants quick, practical health calculators without ads, logins, or paywalls.</p>
+    </div>
+    <div class="footer-links-title">All tools</div>
+    <div class="footer-links">
+      <a href="https://healthylifescale.com">Calorie Tracker</a>
+      <a href="https://bmi.healthylifescale.com">BMI Calculator</a>
+      <a href="https://bodyfat.healthylifescale.com">Body Fat % Calculator</a>
+      <a href="https://waisttohip.healthylifescale.com">Waist-to-Hip Ratio Calculator</a>
+      <a href="https://framesize.healthylifescale.com">Body Frame Size Calculator</a>
+      <a href="https://water.healthylifescale.com" style="font-weight:700;color:var(--ink);">Water Intake Calculator</a>
+      <a href="https://bmr.healthylifescale.com">TDEE & Macro Calculator</a>
+      <a href="https://protein.healthylifescale.com">Protein Intake Calculator</a>
+      <a href="https://caloriesburned.healthylifescale.com">Calories Burned Calculator</a>
+      <a href="https://sleep.healthylifescale.com">Sleep Calculator</a>
+      <a href="https://nap.healthylifescale.com">Nap Calculator</a>
+      <a href="https://duedate.healthylifescale.com">Pregnancy Due Date Calculator</a>
+      <a href="https://pregnancyweight.healthylifescale.com">Pregnancy Weight Gain Calculator</a>
+      <a href="https://period.healthylifescale.com">Period & Ovulation Tracker</a>
+      <a href="https://height.healthylifescale.com">Child Height Predictor</a>
+      <a href="https://bloodpressure.healthylifescale.com">Blood Pressure Calculator</a>
+      <a href="https://heartage.healthylifescale.com">Heart Age Calculator</a>
+      <a href="https://ascvd.healthylifescale.com">ASCVD Risk Calculator</a>
+      <a href="https://heartratezone.healthylifescale.com">Target Heart Rate Zone</a>
+      <a href="https://breathholding.healthylifescale.com">Breath Holding Test</a>
+      <a href="https://pace.healthylifescale.com">Running Pace Calculator</a>
+      <a href="https://symptoms.healthylifescale.com">Symptom Checker</a>
+      <a href="https://mentalhealth.healthylifescale.com">Mental Health Survey</a>
+      <a href="https://fertility.healthylifescale.com">Fertility Checklist</a>
+      <a href="https://gripstrength.healthylifescale.com">Grip Strength Calculator</a>
+      <a href="https://onerepmax.healthylifescale.com">One-Rep Max Calculator</a>
+      <a href="https://bac.healthylifescale.com">BAC Calculator</a>
+    </div>
+        <div class="footer-legal">
+      <a href="https://healthylifescale.com/privacy-policy.html">Privacy Policy</a><span class="fl-dot">&middot;</span><a href="https://healthylifescale.com/about.html">About</a>
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2026 Healthy Life Scale. All tools are educational and provide general estimates only &mdash; they are not medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider for medical concerns.
+    </div>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  const $ = id => document.getElementById(id);
+
+  document.querySelectorAll('.faq-q').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const answer = btn.nextElementSibling;
+      const isOpen = answer.classList.toggle('open');
+      btn.classList.toggle('open', isOpen);
+      btn.querySelector('.faq-icon').textContent = isOpen ? '\u2212' : '+';
+    });
+  });
+
+  const hasClaudeStorage = typeof window.storage !== 'undefined' && window.storage;
+  let localStorageOK = true;
+  try{ localStorage.setItem('__test__','1'); localStorage.removeItem('__test__'); }catch(e){ localStorageOK = false; }
+  const store = {
+    async get(key){
+      if(hasClaudeStorage){ try{ const r = await window.storage.get(key, false); return r ? r.value : null; }catch(e){ return null; } }
+      if(!localStorageOK) return null;
+      try{ return localStorage.getItem(key); }catch(e){ return null; }
+    },
+    async set(key, value){
+      if(hasClaudeStorage){ try{ await window.storage.set(key, value, false); return true; }catch(e){ return false; } }
+      if(!localStorageOK) return false;
+      try{ localStorage.setItem(key, value); return true; }catch(e){ return false; }
+    }
+  };
+
+  function todayStr(){ return new Date().toISOString().slice(0,10); }
+  $('trackerDate').textContent = new Date().toLocaleDateString(undefined,{weekday:'short', month:'short', day:'numeric'});
+
+  let goalLiters = 2.0; // sensible default until calculated
+  let glassCount = 0;
+  let glassSizeMl = 250;
+
+  function dayKey(dateStr){ return 'water:'+dateStr; }
+
+  async function loadGoal(){
+    try{ const v = await store.get('water_goal'); if(v) goalLiters = parseFloat(v); }catch(e){}
+  }
+
+  async function loadDayRecord(dateStr){
+    try{
+      const v = await store.get(dayKey(dateStr));
+      if(!v) return { count: 0, sizeMl: 250 };
+      // backward-compatible: old format stored a plain integer glass count (250ml assumed)
+      if(/^\d+$/.test(v)) return { count: parseInt(v), sizeMl: 250 };
+      const parsed = JSON.parse(v);
+      return { count: parsed.count || 0, sizeMl: parsed.sizeMl || 250 };
+    }catch(e){ return { count: 0, sizeMl: 250 }; }
+  }
+  async function loadCount(){
+    const rec = await loadDayRecord(todayStr());
+    glassCount = rec.count;
+    if(rec.count > 0) glassSizeMl = rec.sizeMl; // keep today's existing size if already logging
+  }
+  async function saveCount(){ await store.set(dayKey(todayStr()), JSON.stringify({ count: glassCount, sizeMl: glassSizeMl })); }
+
+  $('glassSize').addEventListener('change', async ()=>{
+    glassSizeMl = parseInt($('glassSize').value);
+    await saveCount();
+    renderTracker();
+  });
+
+  function renderTracker(){
+    const totalGlasses = Math.max(1, Math.round((goalLiters*1000)/glassSizeMl));
+    const litersSoFar = (glassCount*glassSizeMl/1000);
+    const pct = Math.min(100, (glassCount/totalGlasses)*100);
+    $('progressFill').style.width = pct+'%';
+    $('progressText').textContent = glassCount+' of '+totalGlasses+' glasses ('+litersSoFar.toFixed(2)+' L)';
+    $('glassCount').textContent = glassCount;
+    $('glassSizeNote').textContent = 'each glass counts as '+glassSizeMl+'ml \u00b7 saved on this device only';
+  }
+
+  $('plusBtn').addEventListener('click', async ()=>{ glassCount++; await saveCount(); renderTracker(); await renderStreakAndHistory(); });
+  $('minusBtn').addEventListener('click', async ()=>{ glassCount = Math.max(0, glassCount-1); await saveCount(); renderTracker(); await renderStreakAndHistory(); });
+
+  function isoDaysAgo(n){
+    const d = new Date();
+    d.setDate(d.getDate() - n);
+    return d.toISOString().slice(0,10);
+  }
+
+  async function renderStreakAndHistory(){
+    const goalMl = goalLiters * 1000;
+    const days = [];
+    for(let i=6; i>=0; i--){
+      const dateStr = isoDaysAgo(i);
+      const rec = await loadDayRecord(dateStr);
+      const ml = rec.count * rec.sizeMl;
+      days.push({ dateStr, ml, hasData: rec.count > 0, hitGoal: ml >= goalMl && rec.count > 0 });
+    }
+
+    // streak: consecutive days (from today backward) that hit goal; today doesn't break the streak if not yet hit
+    let streak = 0;
+    for(let i=0; i<days.length; i++){
+      const d = days[days.length-1-i];
+      if(d.hitGoal){ streak++; }
+      else if(i === 0){ continue; }
+      else{ break; }
+    }
+    const badge = $('streakBadge');
+    if(streak >= 2){
+      badge.className = 'streak-badge';
+      badge.innerHTML = '&#128167; '+streak+'-day hydration streak';
+    } else if(streak === 1){
+      badge.className = 'streak-badge';
+      badge.textContent = 'Goal hit today \u2014 keep it going tomorrow';
+    } else {
+      badge.className = 'streak-badge zero';
+      badge.textContent = 'No streak yet \u2014 hit your goal today to start one';
+    }
+
+    const maxMl = Math.max(...days.map(d=>d.ml), goalMl, 1);
+    $('weekChart').innerHTML = days.map(d=>{
+      const heightPct = d.hasData ? Math.max(6, Math.round((d.ml / maxMl) * 100)) : 4;
+      const cls = !d.hasData ? 'empty' : (d.hitGoal ? 'hit-goal' : '');
+      const dayLabel = new Date(d.dateStr+'T00:00:00').toLocaleDateString(undefined, {weekday:'narrow'});
+      return `<div class="week-bar-col"><div class="week-bar ${cls}" style="height:${heightPct}%;" title="${d.dateStr}: ${(d.ml/1000).toFixed(2)}L"></div><div class="week-bar-label">${dayLabel}</div></div>`;
+    }).join('');
+  }
+
+  $('calcBtn').addEventListener('click', async ()=>{
+    const w = parseFloat($('weight').value);
+    if(!w){ alert('Please enter your weight.'); return; }
+    const activityFactor = parseFloat($('activity').value);
+    goalLiters = w * 0.033 * activityFactor;
+
+    $('goalLiters').textContent = goalLiters.toFixed(1)+' L';
+    const glasses = Math.round((goalLiters*1000)/glassSizeMl);
+    $('goalGlasses').textContent = '\u2248 '+glasses+' glasses of '+glassSizeMl+'ml';
+    $('goalOz').textContent = (goalLiters*33.814).toFixed(0)+' fl oz';
+    $('resultLabel').classList.add('show');
+    if($('resultLabel').scrollIntoView){ $('resultLabel').scrollIntoView({behavior:'smooth', block:'start'}); }
+
+    await store.set('water_goal', String(goalLiters));
+    renderTracker();
+    await renderStreakAndHistory();
+  });
+
+  (async function init(){
+    await loadGoal();
+    await loadCount();
+    renderTracker();
+    await renderStreakAndHistory();
+  })();
+})();
+</script>
+</body>
+</html>
